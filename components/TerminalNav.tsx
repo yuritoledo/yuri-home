@@ -27,7 +27,7 @@ export function TerminalNav({ className = "" }: TerminalNavProps) {
             href={item.href}
             className={`transition-all duration-200 ${
               isActive
-                ? "text-[#33ff33]"
+                ? "text-[#33ff33] hover:[text-shadow:0_0_8px_#33ff33]"
                 : "text-[#1a8a1a] hover:text-[#66ff66] hover:[text-shadow:0_0_8px_#33ff33]"
             }`}
           >

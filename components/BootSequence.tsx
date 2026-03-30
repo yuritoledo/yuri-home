@@ -55,10 +55,6 @@ export function BootSequence({ onComplete }: BootSequenceProps) {
     return () => timeouts.forEach(clearTimeout);
   }, [onComplete]);
 
-  const alreadyBooted =
-    typeof window !== "undefined" && sessionStorage.getItem("booted");
-  if (alreadyBooted) return null;
-
   return (
     <div
       className="fixed inset-0 z-40 flex flex-col justify-center px-8 bg-[#0a0a0a]"

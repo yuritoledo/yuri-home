@@ -31,22 +31,25 @@ export function useTyping({
     setIsComplete(false);
     indexRef.current = 0;
 
+    let interval: ReturnType<typeof setInterval> | null = null;
+
     const delayTimeout = setTimeout(() => {
-      const interval = setInterval(() => {
+      interval = setInterval(() => {
         indexRef.current += 1;
         if (indexRef.current >= text.length) {
           setDisplayedText(text);
           setIsComplete(true);
-          clearInterval(interval);
+          clearInterval(interval!);
         } else {
           setDisplayedText(text.slice(0, indexRef.current));
         }
       }, speed);
-
-      return () => clearInterval(interval);
     }, startDelay);
 
-    return () => clearTimeout(delayTimeout);
+    return () => {
+      clearTimeout(delayTimeout);
+      if (interval) clearInterval(interval);
+    };
   }, [text, speed, startDelay, enabled]);
 
   return { displayedText, isComplete };

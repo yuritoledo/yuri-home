@@ -9,8 +9,20 @@ const jetbrainsMono = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Yuri Toledo",
-  description: "Frontend developer based in Brazil",
+  title: {
+    default: "Yuri Toledo",
+    template: "%s — Yuri Toledo",
+  },
+  description: "Frontend developer based in Brazil. Crafting interfaces since 2016.",
+  metadataBase: new URL("https://yuritoledo.dev"),
+  openGraph: {
+    title: "Yuri Toledo",
+    description: "Frontend developer based in Brazil. Crafting interfaces since 2016.",
+    url: "https://yuritoledo.dev",
+    siteName: "Yuri Toledo",
+    locale: "en_US",
+    type: "website",
+  },
 };
 
 export default function RootLayout({

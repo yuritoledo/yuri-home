@@ -1,1 +1,22 @@
 @import "tailwindcss";
+
+@theme {
+  --font-mono: var(--font-mono);
+  --color-terminal-bg: #0a0a0a;
+  --color-terminal-primary: #33ff33;
+  --color-terminal-dim: #1a8a1a;
+  --color-terminal-accent: #66ff66;
+  --color-terminal-border: #1a3a1a;
+  --color-terminal-error: #ff4444;
+}
+
+body {
+  font-family: var(--font-mono), monospace;
+  font-size: 15px;
+  line-height: 1.6;
+}
+
+::selection {
+  background-color: #33ff33;
+  color: #0a0a0a;
+}

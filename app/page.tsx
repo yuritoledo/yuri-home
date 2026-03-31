@@ -20,7 +20,7 @@ export default function Home() {
   const [line1Done, setLine1Done] = useState(false);
   const [line2Done, setLine2Done] = useState(false);
   const [showNav, setShowNav] = useState(false);
-  const days = getDaysSince("2016-01-01");
+  const days = getDaysSince("2015-11-01");
 
   const handleBootComplete = useCallback(() => setBooted(true), []);
 
@@ -45,7 +45,7 @@ export default function Home() {
               <div>
                 ${" "}
                 <TypingText
-                  text="frontend developer"
+                  text="senior frontend engineer"
                   showCursor={!line1Done}
                   onComplete={() => setLine1Done(true)}
                 />

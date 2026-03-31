@@ -8,8 +8,8 @@ const LINKS = [
   },
   {
     label: "email",
-    value: "yuri@example.com",
-    href: "mailto:yuri@example.com",
+    value: "yuriwtoledo@gmail.com",
+    href: "mailto:yuriwtoledo@gmail.com",
   },
   {
     label: "linkedin",

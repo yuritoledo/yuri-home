@@ -5,16 +5,34 @@ import { ProjectCard } from "@/components/ProjectCard";
 
 const PROJECTS = [
   {
-    name: "project-one",
-    description: "Description of the first project.",
-    tags: ["react", "typescript", "next.js"],
-    href: "https://github.com/yuritoledo/project-one",
+    name: "a5-labs",
+    description: "Leading 2 projects with full ownership. AI-augmented workflow with Claude Code, MCP servers, automated tests, PRDs, and rapid prototyping.",
+    tags: ["next.js", "tailwind", "typescript", "claude-code", "mcp", "rpi", "shadcn/ui", "vite"],
   },
   {
-    name: "project-two",
-    description: "Description of the second project.",
-    tags: ["node.js", "express"],
-    href: "https://github.com/yuritoledo/project-two",
+    name: "zenlist",
+    description: "350+ handcrafted e2e tests — no AI, all manual. Performance optimization and accessibility across the platform.",
+    tags: ["next.js", "tailwind", "typescript", "graphql", "jest", "cypress"],
+  },
+  {
+    name: "foxbox",
+    description: "Led frontend architecture for greenfield projects, mentored 3 engineers.",
+    tags: ["next.js", "chakra-ui", "typescript", "rest", "jest", "cypress"],
+  },
+  {
+    name: "millenium-bcp",
+    description: "Collaborated with designers to ship functional frontend code.",
+    tags: ["react", "react-native", "typescript", "rest", "styled-components"],
+  },
+  {
+    name: "troupe",
+    description: "Owned frontend architecture, mentored 3 engineers, shipped from scratch.",
+    tags: ["react", "react-native", "typescript", "rest", "styled-components", "redux"],
+  },
+  {
+    name: "mkdata",
+    description: "Fullstack development — building features end-to-end, from API to UI.",
+    tags: ["node.js", "vue.js", "javascript", "rest", "sql"],
   },
 ];
 

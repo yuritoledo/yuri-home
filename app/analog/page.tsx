@@ -6,9 +6,9 @@ const POSTS = [
   { date: "2026-01-10", title: "Yet another interesting post" },
 ];
 
-export default function BlogPage() {
+export default function AnalogPage() {
   return (
-    <PageShell title="blog">
+    <PageShell title="analog">
       <div className="space-y-2">
         {POSTS.map((post) => (
           <div key={post.date} className="group cursor-pointer">

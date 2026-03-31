@@ -5,6 +5,20 @@ import { ProjectCard } from "@/components/ProjectCard";
 
 const PROJECTS = [
   {
+    name: "druid-delve",
+    period: "side project",
+    description: "Turn-based roguelike dungeon crawler. Play as a druid navigating procedurally-generated dungeons with shapeshift powers and magic.",
+    tags: ["next.js", "tailwind", "typescript", "game-dev"],
+    href: "https://v0-druid-delve.vercel.app/",
+  },
+  {
+    name: "clube-turismo",
+    period: "side project",
+    description: "Backoffice platform for travel consultants.",
+    tags: ["next.js", "tailwind", "typescript"],
+    href: "https://clube-turismo.vercel.app/",
+  },
+  {
     name: "a5-labs",
     period: "12/2023 — present",
     description: "Leading 2 projects with full ownership. AI-augmented workflow with Claude Code, MCP servers, automated tests, PRDs, and rapid prototyping.",

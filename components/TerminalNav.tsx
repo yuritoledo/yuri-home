@@ -18,7 +18,7 @@ export function TerminalNav({ className = "" }: TerminalNavProps) {
   const pathname = usePathname();
 
   return (
-    <nav className={`flex gap-6 flex-wrap ${className}`}>
+    <nav className={`flex flex-col sm:flex-row gap-2 sm:gap-6 ${className}`}>
       {NAV_ITEMS.map((item) => {
         const isActive = pathname === item.href;
         return (

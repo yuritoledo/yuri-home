@@ -8,7 +8,7 @@ __   ___   _ ____  ___   _____ ___  _     _____ ____   ___
 `.trimStart();
 
   return (
-    <pre className="text-[#33ff33] text-xs sm:text-sm leading-none select-none">
+    <pre className="text-[#33ff33] text-[0.45rem] sm:text-xs md:text-sm leading-none select-none overflow-hidden">
       {ascii}
     </pre>
   );

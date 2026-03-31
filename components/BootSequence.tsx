@@ -50,14 +50,14 @@ export function BootSequence({ onComplete }: BootSequenceProps) {
 
   return (
     <div
-      className="fixed inset-0 z-40 flex flex-col justify-center items-start px-8 md:px-16 lg:px-24 bg-[#0a0a0a]"
+      className="fixed inset-0 z-40 flex flex-col justify-center px-8 bg-[#0a0a0a]"
       style={{
         animation: fadingOut
           ? `fadeOut ${FADE_OUT_DURATION}ms ease-out forwards`
           : undefined,
       }}
     >
-      <div className="max-w-[720px] w-full">
+      <div className="max-w-[720px] mx-auto w-full">
         {BOOT_LINES.slice(0, visibleLines).map((line, index) => (
           <div
             key={index}

@@ -36,8 +36,8 @@ export default function Home() {
     <>
       {!booted && <BootSequence onComplete={handleBootComplete} />}
       {booted && (
-        <main className="min-h-screen flex flex-col justify-center px-8 md:px-16 lg:px-24">
-          <div className="max-w-[720px] w-full">
+        <main className="min-h-screen flex flex-col justify-center px-8">
+          <div className="max-w-[720px] mx-auto w-full">
             <div style={{ animation: "fadeIn 400ms ease-out" }}>
               <AsciiName />
             </div>

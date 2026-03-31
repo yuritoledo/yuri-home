@@ -54,7 +54,7 @@ export default function Home() {
                 <div>
                   ${" "}
                   <TypingText
-                    text={`crafting interfaces for ${days} days`}
+                    text={`crafting interfaces for ${days} days and counting...`}
                     showCursor={true}
                     onComplete={() => setLine2Done(true)}
                   />

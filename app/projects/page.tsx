@@ -12,6 +12,13 @@ const PROJECTS = [
     href: "https://v0-druid-delve.vercel.app/",
   },
   {
+    name: "dungeon-generator",
+    period: "side project",
+    description: "Procedural dungeon generator with configurable room placement, corridor carving, and real-time visualization.",
+    tags: ["typescript", "canvas", "procedural-generation"],
+    href: "https://yuritoledo.github.io/dungeon-generator/",
+  },
+  {
     name: "clube-turismo",
     period: "side project",
     description: "Backoffice platform for travel consultants.",

@@ -4,6 +4,7 @@ import { useState, useCallback, useEffect } from "react";
 import { BootSequence } from "@/components/BootSequence";
 import { AsciiName } from "@/components/AsciiName";
 import { TypingText } from "@/components/TypingText";
+import { TypingCycle } from "@/components/TypingCycle";
 import { TerminalNav } from "@/components/TerminalNav";
 
 function getDaysSince(dateString: string): string {
@@ -35,8 +36,8 @@ export default function Home() {
     <>
       {!booted && <BootSequence onComplete={handleBootComplete} />}
       {booted && (
-        <main className="min-h-screen flex flex-col justify-center px-8">
-          <div className="max-w-[720px] mx-auto w-full">
+        <main className="min-h-screen flex flex-col justify-center px-8 md:px-16 lg:px-24">
+          <div className="max-w-[720px] w-full">
             <div style={{ animation: "fadeIn 400ms ease-out" }}>
               <AsciiName />
             </div>
@@ -44,8 +45,15 @@ export default function Home() {
             <div className="mt-6 space-y-1">
               <div>
                 ${" "}
-                <TypingText
-                  text="senior frontend engineer"
+                <TypingCycle
+                  phrases={[
+                    "button crafter",
+                    "css enemy",
+                    "div wrangler",
+                    "console.log debugger",
+                    'the "just add a button" go-to person',
+                  ]}
+                  finalPhrase="senior frontend engineer :)"
                   showCursor={!line1Done}
                   onComplete={() => setLine1Done(true)}
                 />

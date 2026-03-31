@@ -26,12 +26,6 @@ export function BootSequence({ onComplete }: BootSequenceProps) {
   const [fadingOut, setFadingOut] = useState(false);
 
   useEffect(() => {
-    const alreadyBooted = sessionStorage.getItem("booted");
-    if (alreadyBooted) {
-      onComplete();
-      return;
-    }
-
     const timeouts: NodeJS.Timeout[] = [];
 
     BOOT_LINES.forEach((line, index) => {
@@ -47,7 +41,6 @@ export function BootSequence({ onComplete }: BootSequenceProps) {
     timeouts.push(fadeTimeout);
 
     const completeTimeout = setTimeout(() => {
-      sessionStorage.setItem("booted", "1");
       onComplete();
     }, FADE_OUT_DELAY + FADE_OUT_DURATION);
     timeouts.push(completeTimeout);

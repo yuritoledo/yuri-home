@@ -3,18 +3,18 @@
 import { useState, useEffect } from "react";
 
 const BOOT_LINES = [
-  { text: "> initializing grove protocol...", delay: 0 },
-  { text: "> loading root system...", delay: 200 },
-  { text: "> parsing html canopy... ", suffix: "ok", delay: 400 },
-  { text: "> compiling css bark... ", suffix: "ok", delay: 600 },
-  { text: "> resolving branches... ", suffix: "ok", delay: 800 },
-  { text: "> mounting /dev/forest... ", suffix: "ok", delay: 1000 },
-  { text: "> seed checksum verified", delay: 1200 },
-  { text: "> establishing connection...", delay: 1400 },
+  { text: "> GET / HTTP/1.1 ... ", suffix: "200 OK", delay: 0 },
+  { text: "> dns resolved in 12ms", delay: 200 },
+  { text: "> tls handshake... ", suffix: "ok", delay: 400 },
+  { text: "> downloading index.html... ", suffix: "ok", delay: 600 },
+  { text: "> first paint triggered", delay: 800 },
+  { text: "> parsing css... ", suffix: "ok", delay: 1000 },
+  { text: "> loading scripts... ", suffix: "ok", delay: 1200 },
+  { text: "> hydrating dom... ", suffix: "ok", delay: 1400 },
   { text: "> ", suffix: "ready.", delay: 1800 },
 ];
 
-const FADE_OUT_DELAY = 2100;
+const FADE_OUT_DELAY = 3500;
 const FADE_OUT_DURATION = 300;
 
 interface BootSequenceProps {

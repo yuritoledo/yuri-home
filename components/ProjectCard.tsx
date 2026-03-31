@@ -9,8 +9,10 @@ interface ProjectCardProps {
 export function ProjectCard({ name, period, description, tags, href }: ProjectCardProps) {
   return (
     <div className="border border-[#1a3a1a] p-4 relative">
-      <span className="absolute -top-3 left-3 bg-[#0a0a0a] px-2 text-[#33ff33]">
-        {name} <span className="text-[#1a8a1a]">{period}</span>
+      <span className="absolute -top-3 left-3 right-3 bg-[#0a0a0a] px-2 text-[#33ff33] flex items-center">
+        <span>{name}</span>
+        <span className="flex-1 mx-2 border-b border-[#1a3a1a]" />
+        <span className="text-[#1a8a1a]">{period}</span>
       </span>
       <p className="text-[#33ff33] mt-1">{description}</p>
       <p className="text-[#1a8a1a] mt-2">{tags.join(" · ")}</p>

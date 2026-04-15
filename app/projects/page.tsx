@@ -58,6 +58,13 @@ const SIDE_PROJECTS = [
     href: "https://v0-druid-delve.vercel.app/",
   },
   {
+    name: "masmorras-shadowdark",
+    period: "side project",
+    description: "Dungeons for solo/coop/group play in PT-BR for the Shadowdark RPG system. English coming soon.",
+    tags: ["shadowdark", "ttrpg", "pt-br"],
+    href: "https://masmorras-shadowdark.vercel.app/",
+  },
+  {
     name: "dungeon-generator",
     period: "side project",
     description: "Procedural dungeon generator with configurable room placement, corridor carving, and real-time visualization.",

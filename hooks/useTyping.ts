@@ -27,11 +27,14 @@ export function useTyping({
   useEffect(() => {
     if (!enabled) return;
 
-    setDisplayedText("");
-    setIsComplete(false);
     indexRef.current = 0;
 
     let interval: ReturnType<typeof setInterval> | null = null;
+
+    const resetTimeout = setTimeout(() => {
+      setDisplayedText("");
+      setIsComplete(false);
+    }, 0);
 
     const delayTimeout = setTimeout(() => {
       interval = setInterval(() => {
@@ -47,6 +50,7 @@ export function useTyping({
     }, startDelay);
 
     return () => {
+      clearTimeout(resetTimeout);
       clearTimeout(delayTimeout);
       if (interval) clearInterval(interval);
     };

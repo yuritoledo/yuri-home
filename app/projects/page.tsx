@@ -44,6 +44,13 @@ const WORK = [
 
 const SIDE_PROJECTS = [
   {
+    name: "poker-shield",
+    period: "side project",
+    description: "Poker room monitoring dashboard for tables, players, sessions, and risk signals.",
+    tags: ["next.js", "typescript", "tailwind", "zustand"],
+    href: "https://poker-shield.vercel.app",
+  },
+  {
     name: "clube-turismo",
     period: "side project",
     description: "Backoffice platform for travel consultants.",

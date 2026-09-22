@@ -55,7 +55,7 @@ const SIDE_PROJECTS = [
     period: "side project",
     description: "Backoffice platform for travel consultants.",
     tags: ["next.js", "tailwind", "typescript"],
-    href: "https://clube-turismo.vercel.app/",
+    href: "https://travel-app-demo-yuri-toledos-projects.vercel.app/login",
   },
   {
     name: "druid-delve",

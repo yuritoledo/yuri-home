@@ -21,7 +21,6 @@ export function useTyping({
   enabled = true,
 }: UseTypingOptions): UseTypingResult {
   const [displayedText, setDisplayedText] = useState("");
-  const [isComplete, setIsComplete] = useState(false);
   const indexRef = useRef(0);
 
   useEffect(() => {
@@ -41,7 +40,6 @@ export function useTyping({
         indexRef.current += 1;
         if (indexRef.current >= text.length) {
           setDisplayedText(text);
-          setIsComplete(true);
           clearInterval(interval!);
         } else {
           setDisplayedText(text.slice(0, indexRef.current));
@@ -56,5 +54,5 @@ export function useTyping({
     };
   }, [text, speed, startDelay, enabled]);
 
-  return { displayedText, isComplete };
+  return { displayedText, isComplete: displayedText === text };
 }

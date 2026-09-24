@@ -1,7 +1,10 @@
 "use client";
 
+import { Suspense, useCallback, useEffect, useState } from "react";
+import { useSearchParams } from "next/navigation";
 import { PageShell } from "@/components/PageShell";
 import { ProjectCard } from "@/components/ProjectCard";
+import { Cursor } from "@/components/Cursor";
 
 const WORK = [
   {
@@ -80,46 +83,105 @@ const SIDE_PROJECTS = [
   },
 ];
 
-export default function ProjectsPage() {
-  return (
-    <PageShell title="projects" wide>
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
-        <div>
-          <h2 className="text-[#1a8a1a] mb-4">work</h2>
-          <div className="space-y-6">
-            {WORK.map((project, index) => (
-              <div
-                key={project.name}
-                style={{
-                  animation: "fadeIn 400ms ease-out",
-                  animationDelay: `${index * 150}ms`,
-                  animationFillMode: "both",
-                }}
-              >
-                <ProjectCard {...project} />
-              </div>
-            ))}
-          </div>
-        </div>
+function ProjectsSearch() {
+  const searchParams = useSearchParams();
+  const query = searchParams.get("q") ?? "";
+  const [animateCards, setAnimateCards] = useState(true);
+  const inputRef = useCallback((input: HTMLInputElement | null) => input?.focus(), []);
 
-        <div>
-          <h2 className="text-[#1a8a1a] mb-4">side projects</h2>
-          <div className="space-y-6">
-            {SIDE_PROJECTS.map((project, index) => (
-              <div
-                key={project.name}
-                style={{
-                  animation: "fadeIn 400ms ease-out",
-                  animationDelay: `${(WORK.length + index) * 150}ms`,
-                  animationFillMode: "both",
-                }}
-              >
-                <ProjectCard {...project} />
+  useEffect(() => {
+    const stopAnimations = () => setAnimateCards(false);
+    window.addEventListener("popstate", stopAnimations);
+    return () => window.removeEventListener("popstate", stopAnimations);
+  }, []);
+
+  function updateQuery(value: string) {
+    setAnimateCards(false);
+    const url = new URL(window.location.href);
+    if (value) url.searchParams.set("q", value);
+    else url.searchParams.delete("q");
+    window.history.replaceState(null, "", url);
+  }
+
+  const words = query.trim().toLowerCase().split(/\s+/).filter(Boolean);
+  const matches = (project: (typeof WORK)[number] | (typeof SIDE_PROJECTS)[number]) => {
+    const fields = [project.name, project.period, project.description, ...project.tags, "href" in project ? project.href : ""];
+    return words.every((word) => fields.some((field) => field.toLowerCase().includes(word)));
+  };
+  const work = WORK.filter(matches);
+  const sideProjects = SIDE_PROJECTS.filter(matches);
+
+  return (
+    <PageShell title="projects" wide prompt={
+      <span className="relative inline-flex items-center align-middle max-w-full">
+        <input
+          ref={inputRef}
+          type="search"
+          aria-label="Search projects"
+          autoComplete="off"
+          value={query}
+          onChange={(event) => updateQuery(event.target.value)}
+          onKeyDown={(event) => {
+            if (event.key === "Escape") {
+              event.preventDefault();
+              updateQuery("");
+            }
+          }}
+          className="bg-transparent text-inherit outline-none appearance-none [&::-webkit-search-cancel-button]:hidden"
+          style={{ width: `min(${Math.max(query.length, 1)}ch, 70vw)`, caretColor: query ? "currentColor" : "transparent" }}
+        />
+        {!query && <span aria-hidden="true" className="absolute left-0 pointer-events-none"><Cursor /></span>}
+      </span>
+    }>
+      {work.length === 0 && sideProjects.length === 0 ? (
+        <p>no projects found for &quot;{query.trim()}&quot;</p>
+      ) : (
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
+          {work.length > 0 && (
+            <div>
+              <h2 className="text-[#1a8a1a] mb-4">work</h2>
+              <div className="space-y-6">
+                {work.map((project, index) => (
+                  <div
+                    key={project.name}
+                    style={animateCards ? {
+                      animation: "fadeIn 400ms ease-out",
+                      animationDelay: `${index * 150}ms`,
+                      animationFillMode: "both",
+                    } : undefined}
+                  >
+                    <ProjectCard {...project} />
+                  </div>
+                ))}
               </div>
-            ))}
-          </div>
+            </div>
+          )}
+
+          {sideProjects.length > 0 && (
+            <div>
+              <h2 className="text-[#1a8a1a] mb-4">side projects</h2>
+              <div className="space-y-6">
+                {sideProjects.map((project, index) => (
+                  <div
+                    key={project.name}
+                    style={animateCards ? {
+                      animation: "fadeIn 400ms ease-out",
+                      animationDelay: `${(WORK.length + index) * 150}ms`,
+                      animationFillMode: "both",
+                    } : undefined}
+                  >
+                    <ProjectCard {...project} />
+                  </div>
+                ))}
+              </div>
+            </div>
+          )}
         </div>
-      </div>
+      )}
     </PageShell>
   );
+}
+
+export default function ProjectsPage() {
+  return <Suspense fallback={null}><ProjectsSearch /></Suspense>;
 }

@@ -32,7 +32,6 @@ export function useTyping({
 
     const resetTimeout = setTimeout(() => {
       setDisplayedText("");
-      setIsComplete(false);
     }, 0);
 
     const delayTimeout = setTimeout(() => {

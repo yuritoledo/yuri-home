@@ -8,9 +8,10 @@ interface PageShellProps {
   title: string;
   children: React.ReactNode;
   wide?: boolean;
+  prompt?: React.ReactNode;
 }
 
-export function PageShell({ title, children, wide }: PageShellProps) {
+export function PageShell({ title, children, wide, prompt }: PageShellProps) {
   const [titleDone, setTitleDone] = useState(false);
 
   return (
@@ -22,7 +23,9 @@ export function PageShell({ title, children, wide }: PageShellProps) {
           $ <TypingText
             text={title}
             onComplete={() => setTitleDone(true)}
+            showCursor={!titleDone || !prompt}
           />
+          {titleDone && prompt && <> {prompt}</>}
         </div>
 
         {titleDone && (
